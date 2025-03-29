@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Dancing+Script:wght@700&display=swap');
+        
+        :root {
+            --primary: #8e44ad;
+            --secondary: #f1c40f;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Amiri', serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        /* Stars Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            opacity: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: var(--opacity); }
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        .header {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 5px var(--secondary); }
+            to { text-shadow: 0 0 20px var(--secondary), 0 0 30px var(--primary); }
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--light);
+            opacity: 0.9;
+        }
+        
+        /* Crescent Moon */
+        .crescent-moon {
+            width: 150px;
+            height: 150px;
+            margin: 2rem auto;
+            position: relative;
+        }
+        
+        .moon {
+            width: 100%;
+            height: 100%;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 30px var(--secondary);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .moon::before {
+            content: '';
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            background-color: var(--dark);
+            border-radius: 50%;
+            top: 5%;
+            left: 15%;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        
+        .moon::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            top: 20%;
+            left: 30%;
+            filter: blur(2px);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Eid Dua */
+        .eid-dua {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin: 2rem 0;
+            direction: rtl;
+            font-family: 'Amiri', serif;
+            text-shadow: 0 0 5px rgba(241, 196, 15, 0.5);
+        }
+        
+        .translation {
+            font-size: 1.2rem;
+            color: var(--light);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        /* Message */
+        .message {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            background: rgba(26, 26, 46, 0.7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 15px rgba(142, 68, 173, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Lanterns */
+        .lanterns {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .lantern {
+            width: 60px;
+            height: 90px;
+            background: linear-gradient(to bottom, var(--primary), #6c3483);
+            position: relative;
+            border-radius: 5px;
+            animation: swing 3s infinite alternate;
+            transform-origin: top center;
+        }
+        
+        .lantern:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .lantern:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        .lantern::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            top: -10px;
+            left: 20px;
+        }
+        
+        .lantern::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 15px;
+            background-color: var(--secondary);
+            bottom: -15px;
+            left: 25px;
+        }
+        
+        @keyframes swing {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+        
+        /* Button */
+        .wish-btn {
+            background: linear-gradient(to right, var(--primary), #9b59b6);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Amiri', serif;
+            margin-top: 1rem;
+            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);
+        }
+        
+        .wish-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(142, 68, 173, 0.6);
+        }
+        
+        .wish-btn:active {
+            transform: translateY(1px);
+        }
+        
+        /* Hidden Message */
+        .hidden-message {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(26, 26, 46, 0.8);
+            border-radius: 10px;
+            border: 1px solid var(--secondary);
+            animation: fadeIn 1s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hidden-message::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(241, 196, 15, 0.1) 0%, transparent 70%);
+            animation: pulse 4s infinite;
+            z-index: -1;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(0.8); opacity: 0.5; }
+        }
+        
+        /* Signature */
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-top: 3rem;
+            text-shadow: 0 0 5px rgba(241, 196, 15, 0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .eid-dua {
+                font-size: 2rem;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+            }
+            
+            .crescent-moon {
+                width: 120px;
+                height: 120px;
+            }
+        }
