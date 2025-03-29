@@ -1,5 +1,5 @@
- // Create stars
- function createStars() {
+// // Create stars
+function createStars() {
     const starsContainer = document.getElementById('stars');
     const starCount = 200;
     
@@ -27,10 +27,18 @@
     }
 }
 
-// Show hidden message
+// Show hidden message and play gazal
 function showMessage() {
     const message = document.getElementById('specialMessage');
+    const audio = document.getElementById('eidGazal');
+    
+    // Show message
     message.style.display = 'block';
+    
+    // Play the gazal audio
+    audio.play().catch(error => {
+        console.log('Audio playback failed:', error);
+    });
     
     // Scroll to message
     message.scrollIntoView({ behavior: 'smooth' });
@@ -77,54 +85,4 @@ function createFireworks() {
 // Initialize stars when page loads
 window.onload = function() {
     createStars();
-    
-    // Add floating particles
-    createFloatingParticles();
 };
-
-// Floating particles (like fireflies)
-function createFloatingParticles() {
-    const container = document.querySelector('.container');
-    const particleCount = 15;
-    
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Random properties
-        const size = 2 + Math.random() * 3;
-        const x = Math.random() * 100;
-        const y = Math.random() * 100;
-        const duration = 10 + Math.random() * 20;
-        const delay = Math.random() * 10;
-        const color = `hsl(${Math.random() * 60 + 30}, 100%, 70%)`;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${x}%`;
-        particle.style.top = `${y}%`;
-        particle.style.backgroundColor = color;
-        particle.style.boxShadow = `0 0 ${size * 2}px ${size}px ${color}`;
-        particle.style.borderRadius = '50%';
-        particle.style.position = 'absolute';
-        particle.style.opacity = '0.7';
-        particle.style.zIndex = '0';
-        
-        // Animation
-        particle.style.animation = `floatParticle ${duration}s linear ${delay}s infinite`;
-        
-        container.appendChild(particle);
-    }
-    
-    // Add CSS for animation
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes floatParticle {
-            0% { transform: translate(0, 0); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
-}
